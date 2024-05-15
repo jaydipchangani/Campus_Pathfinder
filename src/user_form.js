@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./header";
+import { Link } from "react-router-dom";
 
 const InputField = ({ label, type, name, value, onChange }) => (
   <div className="mb-4">
@@ -65,7 +66,7 @@ const CampusVisitForm = () => {
             value={reason}
             onChange={(e) => setReason(e.target.value)}
           />
-          <button
+          <Link to="./admin">Admin Side here</Link><button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
