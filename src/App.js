@@ -5,7 +5,6 @@ import Home from './home';
 import Explore from './Explore';
 import List from './List';
 import Userform from './user_form';
-import AdminLogin from './AdminLogin';
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
         <Route path='/explore' element={<Explore/>}/>
         <Route path='/list' element={<List/>}/>
         <Route path='/userform' element={<Userform/>}/>
-        <Route path='/admin' element={<AdminLogin/>}/>
+
       </Routes>
     </Router>
   );

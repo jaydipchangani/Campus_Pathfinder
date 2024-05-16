@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import uform from './user_form';
 import reportWebVitals from './reportWebVitals';
-import AdminLogin from './AdminLogin';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

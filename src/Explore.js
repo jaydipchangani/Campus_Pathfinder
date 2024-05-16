@@ -29,10 +29,11 @@ function Explore() {
           </div>
         </Link>
 
+        <Link to='/list'>
         <div class="bg-white min-h-38 max-h-42 max-w-40 rounded-lg float-right m-2 shadow-lg border-2">
           <img src='./clg.png' class="h-28 w-32 rounded-lg" alt='main' ></img>
           <h1 class="text-center text-xl pb-1 font-semibold">Colleges</h1>
-        </div>
+        </div></Link>
 
         <div class="bg-white min-h-38 max-h-42 max-w-40 rounded-lg float-left m-2 shadow-lg border-2">
           <img src='./mess.jpg' class="h-28 w-32 rounded-lg m-" alt='main' ></img>
