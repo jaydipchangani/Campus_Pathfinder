@@ -1,0 +1,74 @@
+.nav-container {
+    padding: 20px;
+  }
+  
+  .checkpoint-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .checkpoint {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .checkpoint.current {
+    background-color: #f0f0f0;
+  }
+  
+  .checkpoint-photo {
+    width: 250px; /* Increase the width */
+    height: 250px; /* Increase the height */
+    object-fit: cover; /* Ensure the entire image is visible */
+    border: 2px solid #ccc; /* Add a border */
+    border-radius: 10%; /* Make it circular */
+    margin-bottom: 20px; /* Add some spacing */
+  }
+  
+  
+  .checkpoint-details {
+    text-align: center;
+  }
+  
+  .progress-bar-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .progress-bar {
+    width: 10px;
+    height: 100px; /* Adjust as needed */
+    background-color: #ccc;
+    position: relative;
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .progress-bar.completed {
+    background-color: #6aff6a; /* Green color for completed checkpoints */
+  }
+  
+  .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .circle.active {
+    background-color: #6aff6a; /* Green color for active checkpoint */
+  }
+  
+  .direction {
+    margin-top: 20px;
+  }
+  
