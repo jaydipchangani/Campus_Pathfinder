@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./header";
 import Box from "./Box";
+import Nav from "./nav";
 import { Link } from "react-router-dom";
 
 function Explore() {
@@ -22,7 +23,7 @@ function Explore() {
       </div>
 
       <div class="p-5">
-        <Link to='/list'>
+        <Link to='/nav2'>
           <div class="bg-white min-h-38 max-h-42 max-w-40 rounded-lg float-left m-2 shadow-lg border-2">
             <img src='./hostel.png' class="h-28 w-32 rounded-lg" alt='main' ></img>
             <h1 class="text-center text-xl pb-1 font-semibold">Hostels</h1>
