@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./header";
 import { Link } from "react-router-dom";
+import Nav from "./nav";
 
 const InputField = ({ label, type, name, value, onChange }) => (
   <div className="mb-4">
@@ -26,7 +27,7 @@ const CampusVisitForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
+    
   };
 
   return (
@@ -66,12 +67,12 @@ const CampusVisitForm = () => {
             value={reason}
             onChange={(e) => setReason(e.target.value)}
           />
-          <button
+           <Link to='/nav'><button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Submit
-          </button>
+          </button></Link>
         </form>
       </div>
     </div>

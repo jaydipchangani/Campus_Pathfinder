@@ -23,11 +23,6 @@ function Herosection() {
           </button>
         </center>
         <center>
-
-        <button  class="bg-black text-white border-white borde rounded-lg font-bold py-2 px-4 hover:bg-slate-900">
-            <Link to='/nav'> Exploring</Link>
-          </button>
-
           
         </center>
       </div>

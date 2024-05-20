@@ -97,7 +97,7 @@ const Nav = () => {
 
   return (
     <div className="nav-container" ref={navContainerRef}>
-      <h1>Checkpoint Navigator</h1>
+      <h1 >Checkpoint Navigator</h1>
       {checkpoints.map((checkpoint, index) => (
         <div key={index} className="checkpoint-container">
           <div className={`checkpoint ${index === currentCheckpointIndex ? 'current' : ''}`}>
