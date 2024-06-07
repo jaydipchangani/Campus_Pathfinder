@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+// import {supabase} from "./config/supabaseClient";
 
 
 function Herosection() {
@@ -24,9 +24,9 @@ function Herosection() {
         </center>
         <center>
 
-        <button  class="bg-black text-white border-white borde rounded-lg font-bold py-2 px-4 hover:bg-slate-900">
+        {/* <button  class="bg-black text-white border-white borde rounded-lg font-bold py-2 px-4 hover:bg-slate-900">
             <Link to='/nav'> Exploring</Link>
-          </button>
+          </button> */}
 
           
         </center>
