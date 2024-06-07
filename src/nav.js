@@ -8,8 +8,7 @@ import cp6 from './img/cp6.jpg';
 import cp7 from './img/cp7.jpg';
 import cp8 from './img/cp8.jpg';
 import cp9 from './img/cp9.jpg';
-import 'leaflet/dist/leaflet.css';
-import './Nav.css'; // Create this CSS file for custom styles
+import './Nav.css'; // Ensure this file has styles for the component
 
 const Nav = () => {
   const allCheckpoints = [
@@ -24,9 +23,8 @@ const Nav = () => {
     { latitude: 23.529729139785935, longitude: 72.45785223917402, name: "Checkpoint 9", photo: cp9, direction: "Turn right and continue for 200 meters." },
   ];
 
-  const [checkpoints, setCheckpoints] = useState(allCheckpoints.slice(0, 3)); // Display first three checkpoints initially
   const [userLocation, setUserLocation] = useState(null);
-  const [currentCheckpointIndex, setCurrentCheckpointIndex] = useState(0);
+  const [currentCheckpointIndex, setCurrentCheckpointIndex] = useState(null);
   const [distance, setDistance] = useState(null);
   const [direction, setDirection] = useState(null);
   const navContainerRef = useRef(null);
@@ -57,26 +55,36 @@ const Nav = () => {
   }, []);
 
   useEffect(() => {
-    if (checkpoints.length > 0 && userLocation) {
-      const nextCheckpoint = checkpoints[currentCheckpointIndex];
-      const distanceToNextCheckpoint = calculateDistance(userLocation, nextCheckpoint);
-      const directionToNextCheckpoint = nextCheckpoint.direction;
-      setDistance(distanceToNextCheckpoint);
-      setDirection(directionToNextCheckpoint);
+    if (userLocation) {
+      let nearestCheckpointIndex = null;
+      let minDistance = Infinity;
 
-      // Move to the next checkpoint if close enough (within 10 meters)
-      if (distanceToNextCheckpoint < 10 && currentCheckpointIndex < allCheckpoints.length - 1) {
-        setCurrentCheckpointIndex(prevIndex => prevIndex + 1);
-        if (currentCheckpointIndex === checkpoints.length - 1) {
-          // Scroll to the next checkpoint
-          navContainerRef.current.scrollTo({
-            top: navContainerRef.current.scrollHeight,
-            behavior: 'smooth'
-          });
+      for (let i = 0; i < allCheckpoints.length; i++) {
+        const checkpoint = allCheckpoints[i];
+        const distanceToCheckpoint = calculateDistance(userLocation, checkpoint);
+
+        if (distanceToCheckpoint < minDistance) {
+          minDistance = distanceToCheckpoint;
+          nearestCheckpointIndex = i;
         }
       }
+
+      // Check if within 100 meters of the nearest checkpoint
+      if (minDistance < 100 && currentCheckpointIndex !== nearestCheckpointIndex) {
+        setCurrentCheckpointIndex(nearestCheckpointIndex);
+        setDirection(
+          nearestCheckpointIndex < allCheckpoints.length - 1
+            ? allCheckpoints[nearestCheckpointIndex + 1].direction
+            : "You have reached the final checkpoint."
+        );
+        setDistance(minDistance.toFixed(2));
+      } else if (minDistance >= 100) {
+        setCurrentCheckpointIndex(null); // Reset if not within any checkpoint
+        setDirection(null);
+        setDistance(null);
+      }
     }
-  }, [userLocation, checkpoints, currentCheckpointIndex, allCheckpoints]);
+  }, [userLocation, currentCheckpointIndex]);
 
   const calculateDistance = (from, to) => {
     const R = 6371000; // radius of the Earth in meters
@@ -90,42 +98,41 @@ const Nav = () => {
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
-    return distance.toFixed(2);
+    return distance;
   };
 
   const toRad = (value) => value * Math.PI / 180;
 
+  const calculateDistanceBetweenCheckpoints = (index) => {
+    if (index < allCheckpoints.length - 1) {
+      return calculateDistance(allCheckpoints[index], allCheckpoints[index + 1]).toFixed(2);
+    }
+    return null;
+  };
+
   return (
     <div className="nav-container" ref={navContainerRef}>
       <h1>Checkpoint Navigator</h1>
-      {checkpoints.map((checkpoint, index) => (
-        <div key={index} className="checkpoint-container">
-          <div className={`checkpoint ${index === currentCheckpointIndex ? 'current' : ''}`}>
+      {allCheckpoints.map((checkpoint, index) => (
+        <div key={index} className={`checkpoint-container ${index === currentCheckpointIndex ? 'current' : ''}`}>
+          <div className="checkpoint">
             <div className="checkpoint-img-container">
               <img src={checkpoint.photo} alt={checkpoint.name} className="checkpoint-photo" />
             </div>
             <div className="checkpoint-details">
-              <p>{checkpoint.name}</p>
-              <p>Direction to next:</p>
-              <p>{direction}</p>
-              {index === currentCheckpointIndex && (
-                <p>{distance} meters</p>
-              )}
+              <h2>{checkpoint.name}</h2>
+              <p><strong>Direction to next:</strong> {index < allCheckpoints.length - 1 ? allCheckpoints[index + 1].direction : "This is the last checkpoint."}</p>
+              <p><strong>Distance to next:</strong> {index < allCheckpoints.length - 1 ? `${calculateDistanceBetweenCheckpoints(index)} meters` : "N/A"}</p>
+              <p><strong>Checkpoint Info:</strong> {checkpoint.direction}</p>
             </div>
           </div>
           <div className="progress-bar-container">
-            <div key={index} className={`progress-bar ${index < currentCheckpointIndex ? 'completed' : ''}`}>
+            <div className={`progress-bar ${index < currentCheckpointIndex ? 'completed' : ''}`}>
               <div className={`circle ${index === currentCheckpointIndex ? 'active' : ''}`} />
             </div>
           </div>
         </div>
       ))}
-      {direction && (
-        <div className="direction">
-          <p>Direction to next checkpoint:</p>
-          <p>{direction}</p>
-        </div>
-      )}
     </div>
   );
 };
