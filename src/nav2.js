@@ -8,7 +8,16 @@ import cp6 from './img/cp6.jpg';
 import cp7 from './img/cp7.jpg';
 import cp8 from './img/cp8.jpg';
 import cp9 from './img/cp9.jpg';
-import './Nav.css'; // Ensure this file has styles for the component
+import './Nav.css';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@\components\ui\card.tsx';
+
 
 const Nav = () => {
   const allCheckpoints = [
@@ -27,6 +36,7 @@ const Nav = () => {
   const [currentCheckpointIndex, setCurrentCheckpointIndex] = useState(null);
   const [distance, setDistance] = useState(null);
   const [direction, setDirection] = useState(null);
+  const [activeCheckpointIndex, setActiveCheckpointIndex] = useState(null);
   const navContainerRef = useRef(null);
 
   useEffect(() => {
@@ -103,34 +113,61 @@ const Nav = () => {
 
   const toRad = (value) => value * Math.PI / 180;
 
+  const calculateDistanceBetweenCheckpoints = (index) => {
+    if (index < allCheckpoints.length - 1) {
+      return calculateDistance(allCheckpoints[index], allCheckpoints[index + 1]).toFixed(2);
+    }
+    return null;
+  };
+
+  const handleCheckpointClick = (index) => {
+    setActiveCheckpointIndex(index === activeCheckpointIndex ? null : index);
+  };
+
   return (
     <div className="nav-container" ref={navContainerRef}>
       <h1>Checkpoint Navigator</h1>
       {allCheckpoints.map((checkpoint, index) => (
-        <div key={index} className={`checkpoint-container ${index === currentCheckpointIndex ? 'current' : ''}`}>
-          <div className="checkpoint">
-            <div className="checkpoint-img-container">
-              <img src={checkpoint.photo} alt={checkpoint.name} className="checkpoint-photo" />
+        <Card
+          key={index}
+          className={`checkpoint-container ${index === currentCheckpointIndex ? 'current' : ''}`}
+          onClick={() => handleCheckpointClick(index)}
+        >
+          <CardHeader>
+            <div className="checkpoint">
+              <div className="checkpoint-img-container">
+                <img src={checkpoint.photo} alt={checkpoint.name} className="checkpoint-photo" />
+              </div>
+              <div className="checkpoint-details">
+                <CardTitle>{checkpoint.name}</CardTitle>
+                {index === activeCheckpointIndex && (
+                  <>
+                    <CardDescription>
+                      <p><strong>Direction to next:</strong> {index < allCheckpoints.length - 1 ? allCheckpoints[index + 1].direction : "This is the last checkpoint."}</p>
+                      <p><strong>Distance to next:</strong> {index < allCheckpoints.length - 1 ? `${calculateDistanceBetweenCheckpoints(index)} meters` : "N/A"}</p>
+                      <p><strong>Checkpoint Info:</strong> {checkpoint.direction}</p>
+                    </CardDescription>
+                  </>
+                )}
+              </div>
             </div>
-            <div className="checkpoint-details">
-              <h2>{checkpoint.name}</h2>
-              {index === currentCheckpointIndex && (
-                <>
-                  <p><strong>Direction to next:</strong></p>
-                  <p>{direction}</p>
-                  <p><strong>Distance:</strong> {distance} meters</p>
-                  <p><strong>Checkpoint Info:</strong> {checkpoint.direction}</p>
-                </>
-              )}
+          </CardHeader>
+          <CardFooter>
+            <div className="progress-bar-container">
+              <div className={`progress-bar ${index < currentCheckpointIndex ? 'completed' : ''}`}>
+                <div className={`circle ${index === currentCheckpointIndex ? 'active' : ''}`} />
+              </div>
             </div>
-          </div>
-          <div className="progress-bar-container">
-            <div className={`progress-bar ${index < currentCheckpointIndex ? 'completed' : ''}`}>
-              <div className={`circle ${index === currentCheckpointIndex ? 'active' : ''}`} />
-            </div>
-          </div>
-        </div>
+          </CardFooter>
+        </Card>
       ))}
+      {direction && currentCheckpointIndex !== null && (
+        <div className="direction">
+          <p><strong>Current Checkpoint:</strong> {allCheckpoints[currentCheckpointIndex].name}</p>
+          <p><strong>Direction to next checkpoint:</strong> {direction}</p>
+          <p><strong>Distance to next checkpoint:</strong> {distance} meters</p>
+        </div>
+      )}
     </div>
   );
 };

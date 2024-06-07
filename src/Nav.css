@@ -19,11 +19,16 @@
   display: flex;
   flex-direction: column;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .checkpoint-container.current {
   background-color: #e0f7fa;
   border-color: #00acc1;
+}
+
+.checkpoint-container:hover {
+  background-color: #f0f8f8;
 }
 
 .checkpoint {
@@ -32,77 +37,93 @@
 }
 
 .checkpoint-img-container {
-  flex: 1;
-  padding-right: 15px;
+  flex: 0 0 80px;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-right: 15px;
 }
 
 .checkpoint-photo {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  width: 100%;
+  height: auto;
 }
 
 .checkpoint-details {
-  flex: 2;
+  flex: 1;
 }
 
 .checkpoint-details h2 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
+  margin: 0 0 10px;
+  font-size: 18px;
   color: #333;
 }
 
 .checkpoint-details p {
   margin: 5px 0;
-  color: #666;
-  font-size: 0.95em;
+  font-size: 14px;
+  color: #555;
 }
 
 .progress-bar-container {
-  margin-top: 15px;
+  margin-top: 10px;
+  height: 10px;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .progress-bar {
-  height: 5px;
-  background: #eee;
-  position: relative;
-  border-radius: 2.5px;
-}
-
-.progress-bar .circle {
-  width: 10px;
-  height: 10px;
-  background: #aaa;
-  border-radius: 50%;
-  position: absolute;
-  top: -3px;
-  transition: background 0.3s;
-}
-
-.completed .circle {
-  background: #00acc1;
-}
-
-.progress-bar-container .progress-bar:before {
-  content: "";
+  width: 0%;
   height: 100%;
-  width: 100%;
-  background: #00acc1;
-  position: absolute;
-  top: 0;
-  left: 0;
+  background-color: #00acc1;
   transition: width 0.3s;
-  z-index: -1;
+}
+
+.progress-bar.completed {
+  width: 100%;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #00acc1;
+  position: absolute;
+  top: -6px;
+  left: calc(50% - 10px);
+}
+
+.circle.active {
+  background-color: #00acc1;
 }
 
 .direction {
+  padding: 10px;
   margin-top: 15px;
-  padding: 15px;
-  background-color: #e0f7fa;
-  border: 1px solid #00acc1;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 1em;
-  color: #007c91;
+}
+
+.direction p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .checkpoint {
+    flex-direction: column;
+    align-items: center;
+  }
+  .checkpoint-img-container {
+    margin: 0 0 10px 0;
+  }
+  .checkpoint-details {
+    text-align: center;
+  }
 }
