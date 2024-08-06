@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+Here is the generated README for the Campus_Pathfinder repository:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Campus_Pathfinder**
+=====================
 
-## Available Scripts
+**Introduction**
+---------------
 
-In the project directory, you can run:
+Campus_Pathfinder is a JavaScript project that aims to provide a navigational tool for campuses, helping users find their way around the campus. The purpose of this project is to create an interactive map that allows users to input their current location and destination, and receive step-by-step directions to get there.
 
-### `npm start`
+**Features**
+------------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Interactive campus map
+* Location-based navigation
+* Step-by-step directions to destinations
+* Real-time updates based on user input
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Installation**
+--------------
 
-### `npm test`
+To install the Campus_Pathfinder project, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository using the following command: `git clone https://github.com/jaydipchangani/Campus_Pathfinder.git`
+2. Navigate to the project directory: `cd Campus_Pathfinder`
+3. Install the required dependencies using npm: `npm install`
+4. Run the project using the following command: `node app.js`
 
-### `npm run build`
+**Usage**
+---------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To use the Campus_Pathfinder project, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Run the project using the command `node app.js`
+2. Open a web browser and navigate to `http://localhost:3000`
+3. Enter your current location and destination in the input fields
+4. Click the "Get Directions" button to receive step-by-step directions to your destination
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Contributing**
+--------------
 
-### `npm run eject`
+To contribute to the Campus_Pathfinder project, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Fork the repository on GitHub
+2. Create a new branch for your feature or bug fix
+3. Make your changes and commit them using a meaningful commit message
+4. Push your changes to your forked repository
+5. Create a pull request to merge your changes into the main repository
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**License**
+---------
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The Campus_Pathfinder project is licensed under the MIT License.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Contact Information**
+---------------------
 
-## Learn More
+If you have any questions or need assistance with the project, please contact me at:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Email: [jaydipchangani@gmail.com](mailto:jaydipchangani@gmail.com)
+* Twitter: @jaydipchangani
+* LinkedIn: linkedin.com/in/jaydipchangani
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Badges**
+---------
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub last commit](https://img.shields.io/github/last-commit/jaydipchangani/Campus_Pathfinder.svg)](https://github.com/jaydipchangani/Campus_Pathfinder/commits/master)
+[![GitHub issues](https://img.shields.io/github/issues/jaydipchangani/Campus_Pathfinder.svg)](https://github.com/jaydipchangani/Campus_Pathfinder/issues)
+[![Forks](https://img.shields.io/github/forks/jaydipchangani/Campus_Pathfinder.svg)](https://github.com/jaydipchangani/Campus_Pathfinder/network/members)
+[![Stars](https://img.shields.io/github/stars/jaydipchangani/Campus_Pathfinder.svg)](https://github.com/jaydipchangani/Campus_Pathfinder/stargazers)
+[![Language](https://img.shields.io/badge/Language-JavaScript-blue.svg)](https://www.javascript.com/)
